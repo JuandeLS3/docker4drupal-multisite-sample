@@ -1,0 +1,18 @@
+version: "3.7"
+
+services:
+  php:
+    image: wodby/drupal:$DRUPAL_TAG
+    environment:
+      DB_HOST: $DB_HOST
+      DB_PORT: $DB_PORT
+      DB_USER: $DB_USER
+      DB_PASSWORD: $DB_PASSWORD
+      DB_NAME: $DB_NAME
+      DB_DRIVER: $DB_DRIVER
+      PHP_FPM_USER: wodby
+      PHP_FPM_GROUP: wodby
+      COLUMNS: 80 # Set 80 columns for docker exec -it.
+      CONFIG_SYNC_DIRECTORY: $CONFIG_SYNC_DIRECTORY_MASTER
+    volumes:
+      - codebase:/var/www/html
